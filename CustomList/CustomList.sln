@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomList", "CustomList\CustomList.csproj", "{68F92866-5961-4E6A-B3BC-5A93F5EADAEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomListTest", "CustomListTest\CustomListTest.csproj", "{A0B3ADE3-091B-4969-8811-D53C820B42E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68F92866-5961-4E6A-B3BC-5A93F5EADAEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68F92866-5961-4E6A-B3BC-5A93F5EADAEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68F92866-5961-4E6A-B3BC-5A93F5EADAEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68F92866-5961-4E6A-B3BC-5A93F5EADAEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B3ADE3-091B-4969-8811-D53C820B42E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B3ADE3-091B-4969-8811-D53C820B42E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B3ADE3-091B-4969-8811-D53C820B42E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B3ADE3-091B-4969-8811-D53C820B42E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B0D459A-5A5A-40BC-9C73-2387C8495E15}
+	EndGlobalSection
+EndGlobal
