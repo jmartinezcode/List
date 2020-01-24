@@ -189,5 +189,21 @@ namespace CustomListTest
 
             Assert.AreEqual(expected, list.Count);
         }
+        [TestMethod]
+        public void ToString_VerifyNowString()
+        {
+            CustomList<int> list = new CustomList<int>();
+            int valueOne = 1;
+            int valueTwo = 2;
+            int valueThree = 3;
+            string expected = "1 2 3";
+
+            list.Add(valueOne);
+            list.Add(valueTwo);
+            list.Add(valueThree);
+            list.ToString();
+
+            Assert.AreEqual(expected, list.ToString());
+        }
     }
 }

@@ -8,41 +8,59 @@ namespace CList
 {
     public class CustomList<T>
     {
-        public T[] array;
-        public int Count;  //needs to be read only
-        public int Capacity; // { get; }; needs to be read only
+        T[] array;
+        int count;
+
+        public int Count { get => count; } //needs to be read only
+        int capacity;
+        public int Capacity { get => capacity; set => capacity = value; } //needs to be read only
         
-        public T this[int i]  // indexer
-        {
-            get => array[i];
-            set => array[i] = value;
-        }
-        
+        public T this[int i] { get => array[i]; set => array[i] = value; }  // indexer        }
+
         // Can use .Equals()
         public CustomList()
         {
-            Capacity = 4;
-            Count = 0;
-            array = new T[Capacity];
+            capacity = 0;
+            count = 0;
+            array = new T[capacity];
         }
 
         public void Add(T newItem)        
         {
-            if (Count == Capacity)
+            if (count == capacity)
             {
-                Capacity += 4;
+                capacity += 4;
                 T[] temporary = array;
-                array = new T[Capacity];
-                for (int i = 0; i < Count; i++)
+                array = new T[capacity];
+                for (int i = 0; i < count; i++)
                 {
                     array[i] = temporary[i];
                 }                
             }
-            array[Count++] = newItem;
+            array[count++] = newItem;
         }
         public void Remove(T item)
         {
+            for (int i = 0; i < count; i++)
+            {
+                if (true)
+                {
 
+                }
+            }
+            
+            
+            //decrement Capacity if too high
+            if (count <= (capacity - 4))
+            {
+                capacity -= 4;
+                T[] temporary = array;
+                array = new T[capacity];
+                for (int i = 0; i < count; i++)
+                {
+                    array[i] = temporary[i];
+                }
+            }
         }
     }
 }

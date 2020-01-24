@@ -25,7 +25,7 @@ namespace CList
             for (int i = 0; i < testList.Count; i++)
             {
                 Console.WriteLine(testList[i]);
-            }            
+            }
             Console.Read();
 
         }
