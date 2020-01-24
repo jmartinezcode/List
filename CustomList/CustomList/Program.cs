@@ -26,6 +26,7 @@ namespace CList
             {
                 Console.WriteLine(testList[i]);
             }
+            // Console.WriteLine(testList[5]); //should throw IndexOutOfRangeException 
             Console.Read();
 
         }

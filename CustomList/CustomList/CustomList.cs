@@ -9,39 +9,58 @@ namespace CList
     public class CustomList<T>
     {
         T[] array;
-        int count;
+        int capacityIncrementer;
 
-        public int Count { get => count; } //needs to be read only
-        int capacity;
-        public int Capacity { get => capacity; set => capacity = value; } //needs to be read only
+        public int Count { get; private set; } //needs to be read only
+
+        public int Capacity { get; set; } //needs to be read only
         
-        public T this[int i] { get => array[i]; set => array[i] = value; }  // indexer        }
+        public T this[int i]
+        {
+            get
+            {
+                if (i < 0 || i >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                return array[i];
+            }
+            set
+            {
+                if (i < 0 || i >= Count)
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                array[i] = value;
+            }
+        }
 
         // Can use .Equals()
         public CustomList()
         {
-            capacity = 0;
-            count = 0;
-            array = new T[capacity];
+            Capacity = 0;
+            capacityIncrementer = 4;
+            Count = 0;
+            array = new T[Capacity];
         }
 
         public void Add(T newItem)        
         {
-            if (count == capacity)
+            if (Count == Capacity)
             {
-                capacity += 4;
+                Capacity += capacityIncrementer;
                 T[] temporary = array;
-                array = new T[capacity];
-                for (int i = 0; i < count; i++)
+                array = new T[Capacity];
+                for (int i = 0; i < Count; i++)
                 {
                     array[i] = temporary[i];
                 }                
             }
-            array[count++] = newItem;
+            array[Count++] = newItem;
         }
         public void Remove(T item)
         {
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (true)
                 {
@@ -51,12 +70,12 @@ namespace CList
             
             
             //decrement Capacity if too high
-            if (count <= (capacity - 4))
+            if (Count <= (Capacity - capacityIncrementer))
             {
-                capacity -= 4;
+                Capacity -= capacityIncrementer;
                 T[] temporary = array;
-                array = new T[capacity];
-                for (int i = 0; i < count; i++)
+                array = new T[Capacity];
+                for (int i = 0; i < Count; i++)
                 {
                     array[i] = temporary[i];
                 }
