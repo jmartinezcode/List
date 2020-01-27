@@ -13,7 +13,7 @@ namespace CList
 
         public int Count { get; private set; } //needs to be read only
 
-        public int Capacity { get; set; } //needs to be read only
+        public int Capacity { get; set; } 
         
         public T this[int i]
         {
@@ -60,15 +60,26 @@ namespace CList
         }
         public void Remove(T item)
         {
-            for (int i = 0; i < Count; i++)
+            bool foundItem = false;
+            int counter = 0;
+            do
             {
-                if (true)
-                {
-
+                for (int i = 0; i < Count; i++)
+                {                    
+                    if (array[i].Equals(item))
+                    {
+                        foundItem = true;
+                        break;
+                    }                    
+                    counter++;
                 }
-            }
-            
-            
+            } while (foundItem == false);
+            Count--;
+            for (int i = counter; i < Count; i++)
+            {
+                array[i] = array[i + 1];
+            }          
+                      
             //decrement Capacity if too high
             if (Count <= (Capacity - capacityIncrementer))
             {

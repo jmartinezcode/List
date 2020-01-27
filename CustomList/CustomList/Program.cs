@@ -18,17 +18,36 @@ namespace CList
             testList.Add(5);
             testList.Add(3);
             testList.Add(4);
+            testList.Add(5);
             testList.Add(6);
             testList.Add(1);
+            testList.Add(5);
             Console.WriteLine("The Capacity is: {0}", testList.Capacity);
             Console.WriteLine("The Count is: {0}\n", testList.Count);
+
             for (int i = 0; i < testList.Count; i++)
             {
-                Console.WriteLine(testList[i]);
+                Console.Write("{0} ", testList[i]);
             }
-            // Console.WriteLine(testList[5]); //should throw IndexOutOfRangeException 
-            Console.Read();
+            Console.WriteLine("");
+            testList.Remove(5);
+            Console.WriteLine("The Capacity is: {0}", testList.Capacity);
+            Console.WriteLine("The Count is: {0}\n", testList.Count);
+            
+            for (int i = 0; i < testList.Count; i++)
+            {
+                Console.Write("{0} ", testList[i]);
+            }
+            Console.WriteLine("");
+            testList.Remove(5);
+            testList.Remove(4);
+            Console.WriteLine("The Capacity is: {0}", testList.Capacity);
+            Console.WriteLine("The Count is: {0}\n", testList.Count);
 
+            for (int i = 0; i < testList.Count; i++)
+            {
+                Console.Write("{0} ", testList[i]);
+            }
         }
     }
 }

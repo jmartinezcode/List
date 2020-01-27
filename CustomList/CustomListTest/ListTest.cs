@@ -63,7 +63,16 @@ namespace CustomListTest
         {
             //verify initial capacity logic
             CustomList<int> list = new CustomList<int>();
+            int expected = 0;
+
+            Assert.AreEqual(expected, list.Capacity);
+        }
+        public void Add_VerifyFirstItemCapacity()
+        {
+            CustomList<int> list = new CustomList<int>();
             int expected = 4;
+
+            list.Add(4);
 
             Assert.AreEqual(expected, list.Capacity);
         }
