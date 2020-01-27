@@ -230,5 +230,49 @@ namespace CustomListTest
 
             Assert.AreEqual(expected, list.ToString());
         }
+        [TestMethod]
+        public void OverloadPlusOperator_Verify()
+        {
+            CustomList<int> listOne = new CustomList<int>();            
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+
+            listOne.Add(1);
+            listOne.Add(2);
+            listOne.Add(3);
+            listTwo.Add(4);
+            listTwo.Add(5);
+            listTwo.Add(6);
+            expected.Add(1);
+            expected.Add(2);
+            expected.Add(3);
+            expected.Add(4);
+            expected.Add(5);
+            expected.Add(6);
+            result = listOne + listTwo;
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
+        [TestMethod]
+        public void OverloadMinusOperator_Verify()
+        {
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>();
+            CustomList<int> result = new CustomList<int>();
+
+            listOne.Add(1);
+            listOne.Add(3);
+            listOne.Add(5);
+            listTwo.Add(2);
+            listTwo.Add(4);
+            listTwo.Add(6);
+            expected.Add(3);
+            expected.Add(5);
+            result = listOne - listTwo;
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
     }
 }
