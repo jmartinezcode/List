@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         T[] array;
         int capacityIncrementer;
@@ -110,6 +110,30 @@ namespace CList
                 }                
             }
             return value;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return array[i];
+            }
+        }
+
+        public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
+        {
+            // placeholder, no functionality yet
+            int counter = 0;
+            CustomList<T> temporary = new CustomList<T>();
+            return temporary;
+        }
+        public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
+        {
+
+            // placeholder, no functionality yet
+            int counter = 0;
+            CustomList<T> temporary = new CustomList<T>();
+            return temporary;
         }
     }
 }
