@@ -78,8 +78,11 @@ namespace CList
             for (int i = counter; i < Count; i++)
             {
                 array[i] = array[i + 1];
-            }          
-                      
+            }
+            CapacityDecrementer();
+        }
+        public void CapacityDecrementer()
+        {
             //decrement Capacity if too high
             if (Count <= (Capacity - capacityIncrementer))
             {
@@ -91,6 +94,22 @@ namespace CList
                     array[i] = temporary[i];
                 }
             }
+        }
+        public override string ToString()
+        {
+            string value = string.Empty;
+            for (int i = 0; i < Count; i++)
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    value += array[i].ToString();
+                }
+                else
+                {
+                    value += string.Format(", {0}", array[i]);
+                }                
+            }
+            return value;
         }
     }
 }

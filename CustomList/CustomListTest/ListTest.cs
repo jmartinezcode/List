@@ -77,7 +77,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, list.Capacity);
         }
         [TestMethod]
-        public void Add_VerifyCapacityDoubles()
+        public void Add_VerifyCapacityIncrements()
         {
             //Add more values than initial capacity: confirm capacity doubles
             CustomList<int> list = new CustomList<int>();
@@ -199,17 +199,33 @@ namespace CustomListTest
             Assert.AreEqual(expected, list.Count);
         }
         [TestMethod]
-        public void ToString_VerifyNowString()
+        public void ToString_VerifyIntNowString()
         {
             CustomList<int> list = new CustomList<int>();
             int valueOne = 1;
             int valueTwo = 2;
             int valueThree = 3;
-            string expected = "1 2 3";
+            string expected = "1, 2, 3";
 
             list.Add(valueOne);
             list.Add(valueTwo);
             list.Add(valueThree);
+            list.ToString();
+
+            Assert.AreEqual(expected, list.ToString());
+        }
+        [TestMethod]
+        public void ToString_VerifyStringNowString()
+        {
+            CustomList<string> list = new CustomList<string>();
+            string david = "David";
+            string brett = "Brett";
+            string mike = "Mike";
+            string expected = "David, Brett, Mike";
+
+            list.Add(david);
+            list.Add(brett);
+            list.Add(mike);
             list.ToString();
 
             Assert.AreEqual(expected, list.ToString());
