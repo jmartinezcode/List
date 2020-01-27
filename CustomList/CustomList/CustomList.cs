@@ -44,7 +44,7 @@ namespace CList
             array = new T[Capacity];
         }
 
-        public void Add(T newItem)        
+        public void Add(T item)        
         {
             if (Count == Capacity)
             {
@@ -56,11 +56,11 @@ namespace CList
                     array[i] = temporary[i];
                 }                
             }
-            array[Count++] = newItem;
+            array[Count++] = item;
         }
         public void Remove(T item)
         {
-            bool foundItem = false;
+            bool foundItem = false; 
             int counter = 0;
             do
             {
@@ -68,18 +68,21 @@ namespace CList
                 {                    
                     if (array[i].Equals(item))
                     {
-                        foundItem = true;
+                        foundItem = true;                        
                         break;
                     }                    
-                    counter++;
+                    counter++;                    
                 }
-            } while (foundItem == false);
-            Count--;
-            for (int i = counter; i < Count; i++)
+            } while (foundItem == false && counter <= Count);                              
+            if (foundItem)
             {
-                array[i] = array[i + 1];
-            }
-            CapacityDecrementer();
+                Count--;
+                for (int i = counter; i < Count; i++)
+                {
+                    array[i] = array[i + 1];
+                }                
+                CapacityDecrementer();
+            }          
         }
         public void CapacityDecrementer()
         {
@@ -122,17 +125,24 @@ namespace CList
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
-            // placeholder, no functionality yet
-            int counter = 0;
             CustomList<T> temporary = new CustomList<T>();
+            foreach (T item in firstList)
+            {
+                temporary.Add(item);
+            }
+            foreach (T item in secondList)
+            {
+                temporary.Add(item);
+            }
             return temporary;
         }
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
         {
-
-            // placeholder, no functionality yet
-            int counter = 0;
-            CustomList<T> temporary = new CustomList<T>();
+            CustomList<T> temporary = firstList;            
+            foreach (T item in secondList)
+            {
+                temporary.Remove(item);               
+            }
             return temporary;
         }
     }

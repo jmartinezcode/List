@@ -79,7 +79,7 @@ namespace CustomListTest
         [TestMethod]
         public void Add_VerifyCapacityIncrements()
         {
-            //Add more values than initial capacity: confirm capacity doubles
+            //Add more values than initial capacity: confirm capacity increments
             CustomList<int> list = new CustomList<int>();
             int valueOne = 1;
             int valueTwo = 3;
@@ -246,7 +246,7 @@ namespace CustomListTest
         public void OverloadMinusOperator_Verify()
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 3, 5 };
-            CustomList<int> listTwo = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> listTwo = new CustomList<int>() { 2, 1, 6 };
             CustomList<int> expected = new CustomList<int>() { 3, 5 };
             CustomList<int> result = new CustomList<int>();
 
