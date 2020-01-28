@@ -231,7 +231,7 @@ namespace CustomListTest
             Assert.AreEqual(expected, list.ToString());
         }
         [TestMethod]
-        public void OverloadPlusOperator_Verify()
+        public void OverloadPlusOperator_VerifyInt()
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 2, 3 };            
             CustomList<int> listTwo = new CustomList<int>() { 4, 5, 6 };
@@ -242,18 +242,110 @@ namespace CustomListTest
 
             Assert.AreEqual(expected.ToString(), result.ToString());
         }
+        public void OverloadPlusOperator_VerifyString()
+        {
+            CustomList<string> listOne = new CustomList<string>() { "Ewan", "McGregor" , "is" };
+            CustomList<string> listTwo = new CustomList<string>() { "the", "best" , "Obi-Wan" };
+            CustomList<string> expected = new CustomList<string>() { "Ewan", "McGregor", "is", "the", "best", "Obi-Wan" };
+            CustomList<string> result = new CustomList<string>();
+
+            result = listOne + listTwo;
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
         [TestMethod]
-        public void OverloadMinusOperator_Verify()
+        public void OverloadMinusOperator_VerifyInt()
         {
             CustomList<int> listOne = new CustomList<int>() { 1, 3, 5 };
             CustomList<int> listTwo = new CustomList<int>() { 2, 1, 6 };
             CustomList<int> expected = new CustomList<int>() { 3, 5 };
             CustomList<int> result = new CustomList<int>();
+            
+            result = listOne - listTwo;
 
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
+        [TestMethod]
+        public void OverloadMinusOperator_VerifyString()
+        {
+            CustomList<string> listOne = new CustomList<string>() { "Hello", "Hi", "Welcome" };
+            CustomList<string> listTwo = new CustomList<string>() { "Hola", "Hello", "Hey" };
+            CustomList<string> expected = new CustomList<string>() { "Hi", "Welcome" };
+            CustomList<string> result = new CustomList<string>();
 
             result = listOne - listTwo;
 
             Assert.AreEqual(expected.ToString(), result.ToString());
         }
+        [TestMethod]
+        public void Zip_VerifyZeroIndex()
+        {
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            int expected = 1;
+            CustomList<int> result = new CustomList<int>();
+
+            result = result.Zip(odd, even);
+
+            Assert.AreEqual(expected, result[0]);
+        }
+        
+        [TestMethod]
+        public void Zip_VerifyAlternateNumbers()
+        {
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> expected = new CustomList<int> { 1, 2, 3, 4, 5, 6 };
+            CustomList<int> result = new CustomList<int>();
+
+            result = result.Zip(odd, even);
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
+        [TestMethod]
+        public void Zip_VerifyCountFirstListLonger()
+        {
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> result = new CustomList<int>();
+            int expected = 6;
+
+            result = result.Zip(odd, even);
+
+            Assert.AreEqual(expected, result.Count);
+        }
+        [TestMethod]
+        public void Zip_VerifyCountFirstListShorter()
+        {
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6, 8, 10 };
+            CustomList<int> result = new CustomList<int>();
+            int expected = 6;
+
+            result = result.Zip(odd, even);
+
+            Assert.AreEqual(expected, result.Count);
+        }
+        [TestMethod]
+        public void Zip_VerifyCapacity()
+        {
+            CustomList<int> odd = new CustomList<int>() { 1, 3, 5, 7 };
+            CustomList<int> even = new CustomList<int>() { 2, 4, 6 };
+            CustomList<int> result = new CustomList<int>();
+            int expected = 8;
+
+            result = result.Zip(odd, even);
+
+            Assert.AreEqual(expected, result.Capacity);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_OutOfBounds_ExceptionThrown()
+        {
+            CustomList<int> list = new CustomList<int>() { 1, 2, 3, 4 };
+            
+            int result = list[-1];
+        }
+
     }
 }

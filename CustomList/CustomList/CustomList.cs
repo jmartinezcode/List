@@ -145,5 +145,26 @@ namespace CList
             }
             return temporary;
         }
+        public CustomList<T> Zip(CustomList<T> firstList, CustomList<T> secondList)
+        {
+            CustomList<T> temporary = new CustomList<T>();
+            if (firstList.Count <= secondList.Count)
+            {
+                for (int i = 0; i < firstList.Count; i++)
+                {
+                    temporary.Add(firstList[i]);
+                    temporary.Add(secondList[i]);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < secondList.Count; i++)
+                {
+                    temporary.Add(firstList[i]);
+                    temporary.Add(secondList[i]);
+                }
+            }                       
+            return temporary;            
+        }
     }
 }
