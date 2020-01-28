@@ -347,6 +347,27 @@ namespace CustomListTest
             
             int result = list[-1];
         }
+        [TestMethod]
+        public void Sort_VerifyIntOrder()
+        {
+            CustomList<int> list = new CustomList<int>() { 17, 3, 37, 29, 47, 71, 23 };
+            CustomList<int> expected = new CustomList<int>() { 3, 17, 23, 29, 37, 47, 71 };
+            CustomList<int> result = new CustomList<int>();
 
+            result = list.Sort();
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }        
+        [TestMethod]
+        public void Sort_VerifyStringOrder()
+        {
+            CustomList<string> list = new CustomList<string>() { "c", "f", "a", "d", "e", "g", "b" };
+            CustomList<string> expected = new CustomList<string>() { "a", "b", "c", "d", "e", "f", "g" };
+            CustomList<string> result = new CustomList<string>();
+
+            result = list.Sort();
+
+            Assert.AreEqual(expected.ToString(), result.ToString());
+        }
     }
 }
