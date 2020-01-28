@@ -58,7 +58,7 @@ namespace CList
             }
             array[Count++] = item;
         }
-        public void Remove(T item)
+        public bool Remove(T item)
         {
             bool foundItem = false; 
             int counter = 0;
@@ -82,7 +82,12 @@ namespace CList
                     array[i] = array[i + 1];
                 }                
                 CapacityDecrementer();
-            }          
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public void CapacityDecrementer()
         {

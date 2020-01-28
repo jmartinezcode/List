@@ -242,6 +242,7 @@ namespace CustomListTest
 
             Assert.AreEqual(expected.ToString(), result.ToString());
         }
+        [TestMethod]
         public void OverloadPlusOperator_VerifyString()
         {
             CustomList<string> listOne = new CustomList<string>() { "Ewan", "McGregor" , "is" };
