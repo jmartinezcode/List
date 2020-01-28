@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CList
 {
-    public class CustomList<T> : IEnumerable
+    public class CustomList<T> : IEnumerable where T: IComparable
     {
         T[] array;
         int capacityIncrementer;
@@ -118,16 +118,7 @@ namespace CList
                 }                
             }
             return value;
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                yield return array[i];
-            }
-        }
-
+        }        
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
             CustomList<T> temporary = firstList;
@@ -166,6 +157,37 @@ namespace CList
                 }
             }                       
             return temporary;            
+        }
+        public T[] Sort()
+        {
+            //BubbleSort https://en.wikipedia.org/wiki/Bubble_sort
+            if (Count == 1)
+            {
+                return array;
+            }
+            bool swapItem = false;
+            for (int i = 0; i < (Count - 1); i++)
+            {
+                if (array[i].CompareTo(array[i + 1]) > 0)
+                {//swap if first item bigger than next item
+                    T temporary = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temporary;
+                    swapItem = true;
+                }                    
+            }
+            if (swapItem)
+            {
+                Sort();
+            }                      
+            return array;
+        }        
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return array[i];
+            }
         }
     }
 }

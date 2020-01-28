@@ -352,22 +352,40 @@ namespace CustomListTest
         {
             CustomList<int> list = new CustomList<int>() { 17, 3, 37, 29, 47, 71, 23 };
             CustomList<int> expected = new CustomList<int>() { 3, 17, 23, 29, 37, 47, 71 };
-            CustomList<int> result = new CustomList<int>();
+            
+            list.Sort();
 
-            result = list.Sort();
+            Assert.AreEqual(expected.ToString(), list.ToString());
+        }
+        [TestMethod]
+        public void Sort_VerifyIntOrderAlreadySorted()
+        {
+            CustomList<int> list = new CustomList<int>() { 3, 17, 23, 29, 37, 47, 71 };
+            CustomList<int> expected = new CustomList<int>() { 3, 17, 23, 29, 37, 47, 71 };
 
-            Assert.AreEqual(expected.ToString(), result.ToString());
-        }        
+            list.Sort();
+
+            Assert.AreEqual(expected.ToString(), list.ToString());
+        }
         [TestMethod]
         public void Sort_VerifyStringOrder()
         {
             CustomList<string> list = new CustomList<string>() { "c", "f", "a", "d", "e", "g", "b" };
             CustomList<string> expected = new CustomList<string>() { "a", "b", "c", "d", "e", "f", "g" };
-            CustomList<string> result = new CustomList<string>();
+            
+            list.Sort();
 
-            result = list.Sort();
+            Assert.AreEqual(expected.ToString(), list.ToString());
+        }
+        [TestMethod]
+        public void Sort_VerifyStringOrderAlreadySorted()
+        {
+            CustomList<string> list = new CustomList<string>() { "a", "b", "c", "d", "e", "f", "g" };
+            CustomList<string> expected = new CustomList<string>() { "a", "b", "c", "d", "e", "f", "g" };
 
-            Assert.AreEqual(expected.ToString(), result.ToString());
+            list.Sort();
+
+            Assert.AreEqual(expected.ToString(), list.ToString());
         }
     }
 }
