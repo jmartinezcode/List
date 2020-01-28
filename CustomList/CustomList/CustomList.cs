@@ -130,11 +130,7 @@ namespace CList
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
-            CustomList<T> temporary = new CustomList<T>();
-            foreach (T item in firstList)
-            {
-                temporary.Add(item);
-            }
+            CustomList<T> temporary = firstList;
             foreach (T item in secondList)
             {
                 temporary.Add(item);
